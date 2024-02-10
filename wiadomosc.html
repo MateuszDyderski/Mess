@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animacja obrazka</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #222;
+  }
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .image {
+    position: absolute;
+    bottom: -100px; /* początkowa pozycja obrazka (poza ekranem) */
+    left: 50%;
+    transform: translateX(-50%);
+    transition: bottom 1s, margin-top 1s;
+    max-width: 100%; /* maksymalna szerokość obrazka */
+    height: auto; /* zachowanie proporcji */
+  }
+  .image.show {
+    bottom: 50%; /* docelowa pozycja obrazka (środek ekranu) */
+    margin-top: -30px; /* dodatkowy margines górny */
+    height:200px;
+  }
+
+  /* Media queries dla responsywności */
+  @media only screen and (max-width: 768px) {
+    .image {
+      bottom: -50px; /* zmniejsz początkową pozycję obrazka na mniejszych ekranach */
+    }
+    .image.show {
+      bottom: 55%; /* zmniejsz docelową pozycję obrazka na mniejszych ekranach */
+    }
+  }
+
+  /* Styl dla napisu */
+  .message {
+    position: absolute;
+    bottom: -100px; /* początkowa pozycja wiadomości (poza ekranem) */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    text-align: center;
+    background-color: #414141;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    display: none;
+    transition: bottom 1s; /* animacja wysunięcia się wiadomości */
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <img class="image" src="poczta.png" alt="Obrazek">
+  <div class="message" onclick="window.location.href='pytanie.html'">Masz (1) nową wiadomość!</div>
+</div>
+
+<script>
+  // Dodaj klasę "show" do obrazka po załadowaniu strony, aby uruchomić animację
+  window.addEventListener('load', function() {
+    document.querySelector('.image').classList.add('show');
+    setTimeout(function() {
+      document.querySelector('.message').style.display = 'block';
+      setTimeout(function() {
+        document.querySelector('.message').style.bottom = '390px'; // Zatrzymaj wiadomość 30px pod obrazkiem
+      }, 500); // Opóźnienie 0,5 sekundy
+    }, 1000); // Opóźnienie 1 sekundy
+
+    // Przesuń obrazek i wiadomość w górę po 5 sekundach
+    setTimeout(function() {
+      document.querySelector('.image').style.bottom = '120%'; // Docelowa pozycja obrazka
+      document.querySelector('.message').style.bottom = '120%'; // Docelowa pozycja wiadomości
+    }, 5000); // Opóźnienie 5 sekund
+
+    // Przekierowanie na stronę odp.html po 10 sekundach
+    setTimeout(function() {
+      window.location.href = 'odp.html';
+    }, 5700); // Opóźnienie 10 sekund
+  });
+</script>
+
+</body>
+</html>

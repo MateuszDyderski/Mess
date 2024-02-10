@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Messages</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #222;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .message {
+      font-size: 24px;
+      color: white;
+      position: relative;
+      bottom: -100px;
+      opacity: 0;
+      padding-left:30px;
+      padding-right:30px;
+    }
+
+    @keyframes slideUp {
+      from {
+        bottom: -100px;
+        opacity: 0;
+      }
+      to {
+        bottom: 0;
+        opacity: 1;
+      }
+    }
+
+    .message.slide {
+      animation: slideUp 0.5s ease-in-out forwards;
+    }
+
+    #image {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 200px;
+    }
+
+    @keyframes slideDown {
+      from {
+        top: -200px;
+      }
+      to {
+        top: 100px;
+      }
+    }
+
+    .image-slide {
+      animation: slideDown 0.5s ease-in-out forwards;
+    }
+
+    /* Media query dla ekranów o szerokości mniejszej niż 768px */
+    @media screen and (max-width: 768px) {
+      .message {
+        font-size: 20px; /* Zmniejszenie rozmiaru czcionki */
+      }
+    }
+
+    /* Styl dla przycisku */
+    .bottom-button {
+      position: fixed;
+      bottom: 270px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      background-color: #df5211;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: none; /* Ukrywamy przycisk na początku */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img id="image" src="sukces.png" alt="Success" class="image-slide">
+    <div id="message1" class="message">Dziękuję za odpowiedź</div>
+    <div id="message2" class="message">Chcę Ci życzyć</div>
+    <div id="message3" class="message">Najcudowniejszych Walentynek pod słońcem!</div>
+    <div id="message4" class="message">Twoja obecność sprawia, że każdy dzień jest dla mnie pełen radości i miłości.</div>
+    <div id="message5" class="message">Mam nadzieję, że w dzień walentynek będziemy mogli spędzić ten wyjątkowy czas razem, otuleni ciepłem naszej miłości. Ściskam Cię mocno i kocham!</div>
+    <div id="message6" class="message"><hr></div>
+    <div id="message7" class="message">Przygotowałem Ci również małą gierkę na zabicie czasu</div>
+    <!-- Add more messages here -->
+  </div>
+
+  <!-- Przycisk, który pojawi się po 10 sekundach -->
+  <button id="gameButton" class="bottom-button">Przejdź do gry</button>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      setTimeout(function() {
+        document.getElementById("image").classList.add("image-slide");
+      }, 0);
+
+      setTimeout(function() {
+        document.getElementById("message1").classList.add("slide");
+      }, 700);
+
+      setTimeout(function() {
+        document.getElementById("message2").classList.add("slide");
+      }, 2000);
+
+      setTimeout(function() {
+        document.getElementById("message3").classList.add("slide");
+      }, 3500);
+
+      setTimeout(function() {
+        document.getElementById("message4").classList.add("slide");
+      }, 5000);
+
+      setTimeout(function() {
+        document.getElementById("message5").classList.add("slide");
+      }, 7000);
+
+      setTimeout(function() {
+        document.getElementById("message6").classList.add("slide");
+      }, 9000);
+
+      setTimeout(function() {
+        document.getElementById("message7").classList.add("slide");
+      }, 10000);
+
+      // Dodajemy przycisk po 10 sekundach
+      setTimeout(function() {
+        document.getElementById("gameButton").style.display = "block";
+      }, 12000);
+    });
+
+    // Przekierowanie po kliknięciu przycisku
+    document.getElementById("gameButton").addEventListener("click", function() {
+      window.location.href = "game.html";
+    });
+  </script>
+</body>
+</html>

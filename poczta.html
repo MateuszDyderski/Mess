@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Walentynkowa Poczta</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #222;
+        color: white;
+        overflow: hidden;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: repeat(2, auto); /* Dwa kolumny, jedna dla każdego słowa */
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 20px;
+        font-size: 3rem;
+        opacity: 0;
+        animation: fadeIn 1s ease-in-out forwards;
+    }
+    .word {
+        display: flex;
+        flex-direction: column;
+    }
+    .letter {
+        animation: fall 1s forwards;
+        animation-delay: calc(var(--index) * 0.1s);
+    }
+    @keyframes fall {
+        0% {
+            transform: translateY(-100vh);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    .letter span {
+        position: relative;
+    }
+    .letter span:before {
+        content: '';
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background-color: #ff7eb9;
+        border-radius: 50%;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bombelki 1s infinite;
+    }
+    @keyframes bombelki {
+        0% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        50% {
+            transform: translateY(-10px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes rise {
+        0% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100vh);
+            opacity: 0;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .container {
+            grid-template-columns: repeat(2, auto); /* W trybie responsywnym jedna kolumna */
+        }
+        .word {
+            margin-top: 20px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="word">
+        <span class="letter" style="--index: 1;">W<span></span></span>
+        <span class="letter" style="--index: 2;">a<span></span></span>
+        <span class="letter" style="--index: 3;">l<span></span></span>
+        <span class="letter" style="--index: 4;">e<span></span></span>
+        <span class="letter" style="--index: 5;">n<span></span></span>
+        <span class="letter" style="--index: 6;">t<span></span></span>
+        <span class="letter" style="--index: 7;">y<span></span></span>
+        <span class="letter" style="--index: 8;">n<span></span></span>
+        <span class="letter" style="--index: 9;">k<span></span></span>
+        <span class="letter" style="--index: 10;">o<span></span></span>
+        <span class="letter" style="--index: 11;">w<span></span></span>
+        <span class="letter" style="--index: 12;">a<span></span></span>
+    </div>
+    <div class="word">
+        <span class="letter" style="--index: 1;">P<span></span></span>
+        <span class="letter" style="--index: 2;">o<span></span></span>
+        <span class="letter" style="--index: 3;">c<span></span></span>
+        <span class="letter" style="--index: 4;">z<span></span></span>
+        <span class="letter" style="--index: 5;">t<span></span></span>
+        <span class="letter" style="--index: 6;">a<span></span></span>
+    </div>
+</div>
+
+<script>
+    window.onload = function() {
+        setTimeout(function(){
+            document.querySelector('.container').style.animation = '';
+            // Dodanie animacji wyślizgiwania się napisów w górę
+            document.querySelectorAll('.letter').forEach(function(letter) {
+                letter.style.animation = 'rise 1s forwards';
+            });
+        }, 5000);
+    };
+
+    setTimeout(function(){
+        // Przekierowanie na stronę index.html po zakończeniu animacji
+        setTimeout(function(){
+            window.location.href = 'wiadomosc.html';
+        }, 1000);
+    }, 4700);
+</script>
+
+</body>
+</html>

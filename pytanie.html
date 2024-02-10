@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Walentynkowa Poczta</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #222;;
+  }
+  .message-container {
+    margin-top: 100px;
+  }
+  .message {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  .hidden {
+    display: none;
+  }
+</style>
+</head>
+<body>
+<div class="message-container">
+  <div class="message" onclick="showNextPage()">Nowa wiadomość - Kliknij aby przeczytać</div>
+</div>
+
+<div id="questionPage" class="hidden">
+  <h2>Czy zostaniesz moją walentynką?</h2>
+  <button id="yesButton" onclick="handleAnswer(true)">Tak</button>
+  <button id="noButton" onclick="handleAnswer(false)">Nie</button>
+</div>
+
+<div id="thanksPage" class="hidden">
+  <h2>Dziękuję za odpowiedź!</h2>
+</div>
+
+<script>
+  function showNextPage() {
+    window.location.href = 'odp.html';
+  }
+</script>
+</body>
+</html>
